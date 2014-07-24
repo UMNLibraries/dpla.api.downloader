@@ -1,0 +1,4 @@
+development:
+  dpla_api_key: "<your key here>"
+  queries:
+   - '&sourceResource.subject=African%20Americans'
