@@ -1,9 +1,11 @@
 module DplaDownloader
   class Download
+
     def initialize(url)
       @url = url
       @url.next_page = 1
     end
+
     def run_queries
       APP_CONFIG['queries'].each do |query|
         @url.query = query
