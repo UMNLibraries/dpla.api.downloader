@@ -1,8 +1,18 @@
 module DplaDownloader
   class Download
 
-    def initialize(url)
-      @url = url
+    Url = Struct.new(:api_key, :page_size, :query, :next_page) do
+      def build
+        "http://api.dp.la/v2/items?api_key=#{api_key}&page_size=#{page_size}#{query}#{page}"
+      end
+
+      def page
+        (next_page) ?  "&page=#{next_page}" : nil
+      end
+    end
+
+    def initialize(api_key, page_size)
+      @url = Url.new(api_key, page_size)
       @url.next_page = 1
     end
 
